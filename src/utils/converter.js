@@ -1,6 +1,5 @@
 /*  TODO
  *  x check if hex or rgb
- *  - parse rgb string into r, g, b
  *  x create index of how far off each value is (r, g, b)
  *  x sort the list by this index
  *  x return first 3 in sorted list
@@ -12,7 +11,7 @@ const data = require("./data");
 /*  @params
  *  inputType: string: "hex" / "rgb"
  *  inputValue: object:
- *    { r: number, g: number, b: number } ||
+ *    { R: number, G: number, B: number } ||
  *    hex: string
  *
  *  @return
@@ -35,12 +34,12 @@ function convertTo8bit(inputType, inputValue) {
   const index = [];
 
   data.forEach((color) => {
-    const { colorId, rgb, hexString } = color;
+    const { colorId, rgb, name, hexString } = color;
     const rDiff = Math.abs(color.rgb.R - inputR);
     const gDiff = Math.abs(color.rgb.G - inputG);
     const bDiff = Math.abs(color.rgb.B - inputB);
     const diff = Math.pow(rDiff, 3) + Math.pow(gDiff, 3) + Math.pow(bDiff, 3);
-    index.push({ colorId, hexString, rgb, diff, rDiff, gDiff, bDiff });
+    index.push({ colorId, name, hexString, rgb, diff, rDiff, gDiff, bDiff });
   });
 
   const sortedIndex = [...index].sort((a, b) => a.diff - b.diff);
@@ -50,23 +49,23 @@ function convertTo8bit(inputType, inputValue) {
 function validateInput(type, value) {
   switch (type) {
     case "rgb": {
-      const { r, g, b } = value;
+      const { R, G, B } = value;
       // check for object
       if (!(value instanceof Object)) return false;
       // check for rgb keys
-      if (!["r", "g", "b"].every((key) => Object.keys(value).includes(key)))
+      if (!["R", "G", "B"].every((key) => Object.keys(value).includes(key)))
         return false;
       // check for numbers
       if (
-        typeof r !== "number" ||
-        typeof g !== "number" ||
-        typeof b !== "number"
+        typeof R !== "number" ||
+        typeof G !== "number" ||
+        typeof B !== "number"
       )
         return false;
       // range
-      if (r < 0 || r > 255) return false;
-      if (g < 0 || g > 255) return false;
-      if (b < 0 || b > 255) return false;
+      if (R < 0 || R > 255) return false;
+      if (G < 0 || G > 255) return false;
+      if (B < 0 || B > 255) return false;
 
       // return true if all passes
       return true;
@@ -81,7 +80,7 @@ function validateInput(type, value) {
 }
 
 function hexToRgb(hex) {
-  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+  const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
     ? {
         R: parseInt(result[1], 16),
@@ -91,8 +90,17 @@ function hexToRgb(hex) {
     : null;
 }
 
+function rgbToHex({ R, G, B }) {
+  function componentToHex(c) {
+    const hex = c.toString(16);
+    return hex.length === 1 ? "0" + hex : hex;
+  }
+  return "#" + componentToHex(R) + componentToHex(G) + componentToHex(B);
+}
+
 module.exports = {
   convertTo8bit,
   validateInput,
   hexToRgb,
+  rgbToHex,
 };

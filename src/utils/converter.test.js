@@ -1,4 +1,4 @@
-const { validateInput, convertTo8bit } = require("./converter");
+const { validateInput, convertTo8bit, rgbToHex } = require("./converter");
 
 describe("converter validator", () => {
   it("must be a valid type", () => {
@@ -32,7 +32,7 @@ describe("converter validator", () => {
   });
 
   it("accepts valid rgb input", () => {
-    const result = validateInput("rgb", { r: 15, g: 15, b: 15 });
+    const result = validateInput("rgb", { R: 15, G: 15, B: 15 });
     expect(result).toBe(true);
   });
 
@@ -44,18 +44,18 @@ describe("converter validator", () => {
 
 describe("converter", () => {
   it("returns an array", () => {
-    const result = convertTo8bit("rgb", { r: 0, g: 0, b: 0 });
+    const result = convertTo8bit("rgb", { R: 0, G: 0, B: 0 });
     expect(result instanceof Array).toBe(true);
   });
 
   it("returns an rgb result including a colorId and diff value", () => {
-    const { colorId, diff } = convertTo8bit("rgb", { r: 0, g: 0, b: 0 })[0];
+    const { colorId, diff } = convertTo8bit("rgb", { R: 0, G: 0, B: 0 })[0];
     expect(typeof colorId).toBe("number");
     expect(typeof diff).toBe("number");
   });
 
   it("returns different rgb results", () => {
-    const results = convertTo8bit("rgb", { r: 0, g: 0, b: 0 });
+    const results = convertTo8bit("rgb", { R: 0, G: 0, B: 0 });
     const differentResults = results.every((result, idx) => {
       const _results = results.map((_result, _idx) => idx !== _idx);
       return _results.every((_result) => _result.colorId !== result.colorId);
@@ -76,5 +76,17 @@ describe("converter", () => {
     const { colorId, diff } = convertTo8bit("hex", "#000000")[0];
     expect(typeof colorId).toBe("number");
     expect(typeof diff).toBe("number");
+  });
+});
+
+describe("rgbToHex", () => {
+  it("converts 0, 0, 0 to #000000", () => {
+    const result = rgbToHex({ R: 0, G: 0, B: 0 });
+    expect(result).toBe("#000000");
+  });
+
+  it("converts 255, 0, 0 to #ff000000", () => {
+    const result = rgbToHex({ R: 255, G: 0, B: 0 });
+    expect(result).toBe("#ff0000");
   });
 });
