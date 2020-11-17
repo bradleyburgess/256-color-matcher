@@ -3,11 +3,11 @@ import clsx from "clsx";
 
 const styles = {
   container: "flex flex-grow flex-wrap flex-row justify-around",
-  input: "border-gray-400 border-2 rounded h-8",
+  input: "border-gray-400 border rounded-xl h-8",
   label: "flex flex-row items-center",
   hexInput: "ml-2 w-24 text-center",
   rgbLabel: "sm:w-1/3 flex pl-3",
-  rgbInput: "pl-2 w-16 ml-2 box-border",
+  rgbInput: "text-center pl-2 w-16 ml-2 box-border",
 };
 
 const InputInput = ({ mode, rgbInput, onHexChange, onRgbChange, hexInput }) => {
