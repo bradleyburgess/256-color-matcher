@@ -4,12 +4,18 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Converter from "./components/Converter";
 
-/*  @TODO:
- *  fix footer window resizing issue
- */
-
 const styles = {
-  container: "px-2 sm:px-0 flex flex-col items-center",
+  container: [
+    "px-2",
+    "sm:px-0",
+    "sm:h-full",
+    "sm:flex",
+    "sm:flex-col",
+    "sm:items-center",
+    "sm:justify-center",
+    "sm:-mt-20",
+    "text-gray-800",
+  ],
   // app: "max-w-lg",
 };
 
