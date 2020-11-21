@@ -27,9 +27,6 @@ const Footer = () => {
     const appHeight = document.querySelector("#app-container").offsetHeight;
     const windowHeight = window.innerHeight;
     const footerHeight = document.querySelector("#footer").offsetHeight;
-    console.log("app height:", appHeight);
-    console.log("window height:", windowHeight);
-    console.log("footer height:", footerHeight);
     setHeight({
       appHeight,
       windowHeight,
