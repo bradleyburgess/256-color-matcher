@@ -1,12 +1,10 @@
 {
-  "name": "client",
+  "name": "256-color-matcher",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.32",
     "@fortawesome/free-brands-svg-icons": "^5.15.1",
-    "@fortawesome/free-regular-svg-icons": "^5.15.1",
-    "@fortawesome/free-solid-svg-icons": "^5.15.1",
     "@fortawesome/react-fontawesome": "^0.1.12",
     "@fullhuman/postcss-purgecss": "^3.0.0",
     "@testing-library/jest-dom": "^5.11.5",
@@ -19,6 +17,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
+    "analyze": "source-map-explorer 'build/static/js/*.js'",
     "prestart": "npm run watch:css",
     "start": "react-scripts start",
     "prebuild": "npm run watch:css",
@@ -48,6 +47,7 @@
   "devDependencies": {
     "autoprefixer": "^9.8.6",
     "postcss-cli": "^8.2.0",
+    "source-map-explorer": "^2.5.0",
     "tailwindcss": "^1.9.6"
   }
 }

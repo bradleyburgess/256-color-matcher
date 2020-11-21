@@ -1,44 +1,63 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import clsx from "clsx";
 import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Converter from "./components/Converter";
 
 const styles = {
-  container: [
+  app: [
     "px-2",
     "sm:px-0",
-    "md:h-full",
     "sm:flex",
     "sm:flex-col",
     "sm:items-center",
-    // "md:flex",
-    // "md:flex-col",
-    // "md:items-center",
-    // "xl:justify-center",
     "text-gray-800",
   ],
-  // app: "max-w-lg",
+  container: ["h-full", "flex", "flex-col"],
+  calculateFlex: (windowHeight, appHeight) => {
+    if (windowHeight < appHeight) {
+      return "justify-start";
+    } else return "justify-center";
+  },
 };
 
 function App() {
-  // for window resizing?
-  // const [height, setHeight] = useState(0);
-  // const updateHeight = () => setHeight(window.innerHeight);
-  // useEffect(() => {
-  //   // window.addEventListener("resize", updateHeight);
-  //   setHeight(window.innerHeight);
-  //   console.log(height);
-  //   // return () => window.removeEventListener("resize", updateHeight);
-  // });
+  const [height, setHeight] = useState(0);
+  const [appHeight, setAppHeight] = useState(0);
+
+  const updateWindowHeight = () => {
+    const height = window.innerHeight;
+    setHeight(height);
+  };
+
+  const updateAppHeight = () => {
+    const _appHeight = document.querySelector("#app").offsetHeight;
+    setAppHeight(_appHeight);
+  };
+
+  const updateHeight = () => {
+    updateWindowHeight();
+    updateAppHeight();
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", updateHeight);
+    updateHeight();
+    return () => window.removeEventListener("rezize", updateHeight);
+  }, [height, appHeight]);
 
   return (
-    <div className={clsx(styles.container)}>
-      <div id="app-container" className={clsx(styles.app)}>
+    <div
+      className={clsx(
+        styles.container,
+        styles.calculateFlex(height, appHeight)
+      )}
+    >
+      <div id="app" className={clsx(styles.app)}>
         <Header />
         <Converter />
+        <Footer />
       </div>
-      <Footer />
     </div>
   );
 }

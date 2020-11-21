@@ -267,6 +267,7 @@ module.exports = {
     },
     fontFamily: {
       sans: [
+        "Nunito Sans",
         "system-ui",
         "-apple-system",
         "BlinkMacSystemFont",
@@ -283,6 +284,7 @@ module.exports = {
       ],
       serif: ["Georgia", "Cambria", '"Times New Roman"', "Times", "serif"],
       mono: [
+        "Source Code Pro",
         "Menlo",
         "Monaco",
         "Consolas",

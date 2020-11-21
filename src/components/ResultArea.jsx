@@ -1,7 +1,7 @@
 import React from "react";
 import clsx from "clsx";
 import idealTextColor from "../utils/idealTextColor.js";
-import { hexToRgb, rgbToHex } from "../utils/converter.js";
+import { rgbToHex } from "../utils/converter.js";
 import rgbStringify from "../utils/rgbStringify.js";
 import padColorId from "../utils/padColorId.js";
 
@@ -77,14 +77,14 @@ const ResultArea = ({ mode, inputColor, matchColor }) => {
   );
 };
 
-const Swatch = ({ mode, inputColorText, colorName, inputColor, colorId }) => {
+const Swatch = ({ mode, inputColorText, inputColor, colorId }) => {
   const textColor = idealTextColor(inputColor);
   return (
     <div
       className={clsx(styles.swatch)}
       style={{ backgroundColor: rgbStringify(inputColor), color: textColor }}
     >
-      {!colorId && <span className="font-bold">Input Color</span>}
+      {!colorId && <span className="font-bold">Input:</span>}
       {colorId && (
         <span className="font-bold">Match: {padColorId(colorId)}</span>
       )}
