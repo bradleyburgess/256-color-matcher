@@ -35,14 +35,13 @@ function App() {
     setAppHeight(_appHeight);
   };
 
-  const updateHeight = () => {
-    updateWindowHeight();
-    updateAppHeight();
-  };
-
   useEffect(() => {
+    const updateHeight = () => {
+      updateWindowHeight();
+      updateAppHeight();
+    };
+
     window.addEventListener("resize", updateHeight);
-    updateHeight();
     return () => window.removeEventListener("rezize", updateHeight);
   }, [height, appHeight]);
 
