@@ -20,7 +20,7 @@ const Footer = () => {
             <FontAwesomeIcon icon={faTwitter} />
           </span>
         </a>
-        <a href="https://github.com/bradleyburgess/">
+        <a href="https://github.com/bradleyburgess/256-color-matcher">
           <span className={clsx(styles.socialIcon)}>
             <FontAwesomeIcon icon={faGithub} />
           </span>
