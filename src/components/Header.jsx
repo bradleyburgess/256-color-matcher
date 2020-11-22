@@ -3,7 +3,7 @@ import clsx from "clsx";
 
 const styles = {
   container: "pt-3",
-  h1: "uppercase font-bold text-3xl text-center",
+  h1: "uppercase font-bold text-3xl md:text-4xl text-center",
   subheading: "text-center",
 };
 
