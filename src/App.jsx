@@ -22,12 +22,12 @@ const styles = {
 };
 
 function App() {
-  const [height, setHeight] = useState(0);
+  const [windowHeight, setWindowHeight] = useState(0);
   const [appHeight, setAppHeight] = useState(0);
 
   const updateWindowHeight = () => {
     const height = window.innerHeight;
-    setHeight(height);
+    setWindowHeight(height);
   };
 
   const updateAppHeight = () => {
@@ -41,15 +41,18 @@ function App() {
       updateAppHeight();
     };
 
+    updateHeight();
+
     window.addEventListener("resize", updateHeight);
+
     return () => window.removeEventListener("rezize", updateHeight);
-  }, [height, appHeight]);
+  }, [windowHeight, appHeight]);
 
   return (
     <div
       className={clsx(
         styles.container,
-        styles.calculateFlex(height, appHeight)
+        styles.calculateFlex(windowHeight, appHeight)
       )}
     >
       <div id="app" className={clsx(styles.app)}>
