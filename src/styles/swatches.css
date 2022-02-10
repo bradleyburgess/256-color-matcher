@@ -1,0 +1,28 @@
+.swatch {
+  display: flex;
+  flex-direction: column;
+  color: var(--gray1);
+  background-color: white;
+  transition: 500ms all ease-in-out;
+  transition-delay: 200ms;
+}
+
+.input-swatch {
+  justify-content: flex-start;
+}
+
+.swatch-text {
+  display: flex;
+  flex-direction: column;
+  padding: 1em;
+  transition: 100ms color ease-in-out;
+}
+
+.match-swatch {
+  justify-content: flex-end;
+}
+
+.swatch-text-label {
+  text-transform: uppercase;
+  font-weight: 700;
+}

@@ -1,17 +1,18 @@
-# 256-color matcher
+# 256 Color Matcher
 
-[Live app](https://256-color-matcher.netlify.app/)
+This is a simple web app written in pure HTML, CSS and JS for finding the closest matching standard 256 color from a given input color. This is useful if you're styling e.g. `xterm` and need to find the closest color in the palette.
 
-A tool to find the closest standard 256-color from a given hex / rgb.
+## Features
 
-Features:
+[x] Pure HTML, CSS and JS — no frameworks
+[x] `Hex` and `RGB` modes (updates color texts and inputs)
+[x] `18kb` bundle size
+[x] 3 `npm` dependencies
+[x] Bundled with `webpack`
+[x] Tests for all non-vendor library modules (`jest`)
 
-- matches the closest standard 256-color from any input color
-- hex or rgb mode
-- remember last match (saved in LocalStorage)
+## Building / testing / running
 
-## Roadmap
-
-- [ ] history list
-- [ ] tweak algorithm (some colors don't work as well)
-- [ ] export color(s)
+- Build: `yarn && yarn build`
+- Test: `yarn && yarn test` (or `test:watch`)
+- Serve: `yarn && yarn build && npx serve dist/`

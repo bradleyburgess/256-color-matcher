@@ -1,0 +1,61 @@
+html,
+body {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+}
+
+.container {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.swatch-container {
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.swatch {
+  flex-grow: 1;
+}
+
+.input-container {
+  z-index: 2;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+}
+
+.input-area {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.mode-area {
+  height: 100%;
+}
+
+.mode-form {
+  height: 100%;
+}
+
+.input-form {
+  height: 100%;
+}
+
+.color-input-area {
+  height: 100%;
+  align-items: center;
+}

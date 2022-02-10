@@ -1,53 +1,42 @@
 {
   "name": "256-color-matcher",
-  "version": "0.1.0",
-  "private": false,
-  "dependencies": {
-    "@fortawesome/fontawesome-svg-core": "^1.2.32",
-    "@fortawesome/free-brands-svg-icons": "^5.15.1",
-    "@fortawesome/react-fontawesome": "^0.1.12",
-    "@fullhuman/postcss-purgecss": "^3.0.0",
-    "@testing-library/jest-dom": "^5.11.5",
-    "@testing-library/react": "^11.1.2",
-    "@testing-library/user-event": "^12.2.2",
-    "clsx": "^1.1.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-scripts": "4.0.0",
-    "web-vitals": "^0.2.4"
-  },
+  "version": "2.0.0",
+  "description": "Find the closest matching standard 256 color",
+  "main": "dist/index.js",
+  "repository": "git@github.com:bradleyburgess/256-color-matcher.git",
+  "author": "Bradley Burgess <bradleyburgess@gmail.com>",
+  "license": "MIT",
+  "private": true,
   "scripts": {
-    "analyze": "source-map-explorer 'build/static/js/*.js'",
-    "prestart": "npm run watch:css",
-    "start": "react-scripts start",
-    "prebuild": "npm run watch:css",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "watch:css": "postcss src/assets/tailwind.css -o src/assets/main.css"
-  },
-  "eslintConfig": {
-    "extends": [
-      "react-app",
-      "react-app/jest"
-    ]
-  },
-  "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
-    "development": [
-      "last 1 chrome version",
-      "last 1 firefox version",
-      "last 1 safari version"
-    ]
+    "build": "cross-env NODE_ENV=production webpack",
+    "preanalyze": "yarn build",
+    "analyze": "webpack-bundle-analyzer stats.json",
+    "dev": "cross-env NODE_ENV=development webpack serve",
+    "format": "prettier --write \"./src/*.{js,json,css,scss}\" \"./dist/index.html\"",
+    "lint": "eslint src",
+    "test": "clear && jest",
+    "test:watch": "jest --watch"
   },
   "devDependencies": {
-    "autoprefixer": "^9.8.6",
-    "postcss-cli": "^8.2.0",
-    "source-map-explorer": "^2.5.0",
-    "tailwindcss": "^1.9.6"
+    "@babel/core": "^7.16.12",
+    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
+    "babel-jest": "^27.4.6",
+    "cross-env": "^7.0.3",
+    "css-loader": "^6.5.1",
+    "eslint": "^8.7.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-jest": "^25.7.0",
+    "jest": "^27.4.7",
+    "prettier": "^2.5.1",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.67.0",
+    "webpack-bundle-analyzer": "^4.5.0",
+    "webpack-cli": "^4.9.1",
+    "webpack-dev-server": "^4.7.3"
+  },
+  "dependencies": {
+    "color": "^4.2.0",
+    "color-diff": "^1.2.0",
+    "normalize.css": "^8.0.1"
   }
 }

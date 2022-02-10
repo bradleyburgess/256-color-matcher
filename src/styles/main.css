@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Mono&family=Open+Sans:wght@400;600;700&display=swap");
+@import "./variables.css";
+@import "./reset.css";
+@import "./layout.css";
+@import "./swatches.css";
+@import "./input.css";
+
+/* basic styling */
+html {
+  font-size: 16px;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--gray9);
+  color: var(--gray1);
+}
+
+p {
+  line-height: 1.5em;
+}
+
+.font-mono {
+  font-family: var(--font-mono);
+}
