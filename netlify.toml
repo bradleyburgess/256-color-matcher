@@ -1,0 +1,7 @@
+[build]
+publish = "dist/"
+
+
+[context.production]
+  publish = "dist/"
+  environment = { NODE_ENV = "production", NODE_VERSION = "16.14.0" }
