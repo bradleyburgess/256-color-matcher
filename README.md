@@ -4,12 +4,12 @@ This is a simple web app written in pure HTML, CSS and JS for finding the closes
 
 ## Features
 
-[x] Pure HTML, CSS and JS — no frameworks
-[x] `Hex` and `RGB` modes (updates color texts and inputs)
-[x] `18kb` bundle size
-[x] 3 `npm` dependencies
-[x] Bundled with `webpack`
-[x] Tests for all non-vendor library modules (`jest`)
+- [x] Pure HTML, CSS and JS — no frameworks
+- [x] `Hex` and `RGB` modes (updates color texts and inputs)
+- [x] `18kb` bundle size
+- [x] 3 `npm` dependencies
+- [x] Bundled with `webpack`
+- [x] Tests for all non-vendor library modules (`jest`)
 
 ## Building / testing / running
 
