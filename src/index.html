@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>256 Color Matcher</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="swatch-container">
+        <div class="swatch input-swatch">
+          <div class="swatch-text">
+            <span class="swatch-text-label">Input</span>
+            <span id="input-swatch-color">#ffffff</span>
+          </div>
+        </div>
+        <div class="swatch match-swatch">
+          <div class="swatch-text">
+            <span class="swatch-text-label">Match</span>
+            <span id="match-swatch-color">#ffffff</span>
+            <div>Color Code <span id="match-swatch-color-code">015</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="input-container">
+        <div class="mode-area">
+          <form class="mode-form" autocomplete="off" spellcheck="false">
+            <div class="mode">
+              <input
+                type="radio"
+                name="mode"
+                id="hex-radio"
+                checked
+                data-mode="hex"
+              />
+              <label for="hex-radio" class="mode-radio-label hex-radio-label"
+                >Hex</label
+              >
+            </div>
+            <div class="mode">
+              <input type="radio" name="mode" id="rgb-radio" data-mode="rgb" />
+              <label for="rgb-radio" class="mode-radio-label rgb-radio-label"
+                >RGB</label
+              >
+            </div>
+          </form>
+        </div>
+        <div class="input-area">
+          <form class="input-form" autocomplete="off" spellcheck="false">
+            <div class="color-input-area" id="hex-input-area">
+              <label for="hex-input" class="color-input-label"
+                >Hex<input
+                  type="text"
+                  name="hex-input"
+                  id="hex-input"
+                  class="color-input"
+                  value="#ffffff"
+              /></label>
+            </div>
+            <div class="color-input-area" id="rgb-input-area">
+              <label for="r-input" class="color-input-label"
+                >R<input
+                  class="color-input"
+                  id="r-input"
+                  max="255" 
+                  min="0"
+                  name="r-input"
+                  type="number"
+                  /></label
+              ><label for="g-input" class="color-input-label"
+                >G<input
+                  class="color-input"
+                  id="g-input"
+                  max="255" /></label
+                  min="0"
+                  name="g-input"
+                  type="number"
+              ><label for="b-input" class="color-input-label"
+                >B<input
+                  class="color-input"
+                  id="b-input"
+                  max="255"
+                  min="0"
+                  name="b-input"
+                  type="number"
+              /></label>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <script src="./bundle.js"></script>
+  </body>
+</html>

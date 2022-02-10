@@ -13,6 +13,17 @@ module.exports = {
         test: /\.css$/i,
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /index\.html/,
+        use: [
+          {
+            loader: "file-loader",
+            options: {
+              name: "index.html",
+            },
+          },
+        ],
+      },
     ],
   },
   devServer: {
