@@ -1,3 +1,4 @@
+import "./index.html";
 import "./styles/main.css";
 import * as elems from "./app/domElements";
 import { changeColor } from "./app/changeColor";
