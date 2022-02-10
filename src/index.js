@@ -1,4 +1,5 @@
 import "./index.html";
+import "./favicon-48x48.png";
 import "./styles/main.css";
 import * as elems from "./app/domElements";
 import { changeColor } from "./app/changeColor";
