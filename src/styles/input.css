@@ -30,7 +30,7 @@ label {
 }
 
 .color-input-area {
-  transition: 100ms display ease-in-out;
+  transition: var(--transition-duration) display var(--transition-function);
 }
 
 /* ============================ MODE ============================ */
@@ -62,30 +62,31 @@ input[type="radio"] {
   -moz-user-select: none;
   -ms-user-select: none;
   z-index: 1;
-  transition: 100ms color ease-out;
+  transition: var(--transition-duration) color var(--transition-function);
 }
 
 .mode-radio-label::before {
   content: "";
   position: absolute;
   left: 0;
-  height: 0%;
+  height: 100%;
+  transform: scaleY(0);
   width: 100%;
   background-color: var(--gray2);
   z-index: -1;
-  transition: 100ms height ease-out;
+  transition: var(--transition-duration) transform var(--transition-function);
 }
 
 .hex-radio-label::before {
-  bottom: 0;
+  transform-origin: bottom;
 }
 
 .rgb-radio-label::before {
-  top: 0;
+  transform-origin: top;
 }
 
 input[type="radio"]:checked ~ label::before {
-  height: 100%;
+  transform: scaleY(1);
 }
 
 input[type="radio"]:checked ~ label {
@@ -93,14 +94,15 @@ input[type="radio"]:checked ~ label {
 }
 
 /* ============================ COLOR INPUT ============================ */
-.color-input-area {
-  display: flex;
-}
-
 .input-area {
   /* padding-left: 1.5em; */
   flex-grow: 1;
   background-color: var(--gray9);
+}
+
+.color-input-area {
+  display: flex;
+  /* position: relative; */
 }
 
 .color-input {
@@ -110,7 +112,7 @@ input[type="radio"]:checked ~ label {
   margin-left: var(--label-padding);
   border-top-right-radius: 1em;
   border-bottom-right-radius: 1em;
-  transition: 100ms border ease-in-out;
+  transition: var(--transition-duration) border var(--transition-function);
   color: var(--gray1);
   padding-left: 0.5em;
 }

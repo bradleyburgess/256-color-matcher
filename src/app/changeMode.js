@@ -7,8 +7,9 @@ const getModeArea = (mode) => elems[mode + "InputArea"];
 const getOtherModeArea = (mode) => elems[otherMode[mode] + "InputArea"];
 
 export function changeMode(mode) {
-  getOtherModeArea(mode).style.display = "none";
-  getModeArea(mode).style.display = "flex";
+  // toggle hiding the modes
+  getOtherModeArea(mode).classList.add("hidden");
+  getModeArea(mode).classList.remove("hidden");
 
   // make sure the mode is checked; mostly for initialization
   const shouldBeChecked = document.querySelector(
@@ -27,6 +28,7 @@ export function changeMode(mode) {
   inputSwatchColor.innerText = inputSwatchColorText;
   matchSwatchColor.innerText = matchSwatchColorText;
 
+  // shift the focus to the input
   shiftFocusToInput(mode);
 
   // save state in local storage

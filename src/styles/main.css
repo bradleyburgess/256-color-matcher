@@ -23,3 +23,7 @@ p {
 .font-mono {
   font-family: var(--font-mono);
 }
+
+.hidden {
+  display: none;
+}

@@ -6,6 +6,7 @@ export const hexInput = document.querySelector("#hex-input");
 export const hexInputArea = document.querySelector("#hex-input-area");
 export const hexRadio = document.querySelector("#hex-radio");
 export const html = document.querySelector("html");
+export const inputArea = document.querySelector(".input-area");
 export const inputSwatch = document.querySelector(".input-swatch");
 export const inputSwatchColor = document.querySelector("#input-swatch-color");
 export const matchSwatch = document.querySelector(".match-swatch");

@@ -26,3 +26,8 @@
 .input-area {
   --label-padding: 0.5em;
 }
+
+.input-container {
+  --transition-duration: 150ms;
+  --transition-function: ease;
+}
