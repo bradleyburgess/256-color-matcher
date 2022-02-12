@@ -9,10 +9,25 @@ import { loadInitialState } from "./app/loadInitialState";
 import { sanitizeHex } from "./lib/sanitizeHex";
 import { sanitizeRgb } from "./lib/sanitizeRgb";
 import { shiftFocusToInput } from "./app/shiftFocusToInput";
+import { handleResize } from "./app/handlers";
 
 (() => {
   // load saved state, if any
   const { mode, color } = loadInitialState();
+  const initialDimensions = {
+    width: window.innerWidth,
+    height: window.innerHeight,
+  };
+  window.addEventListener(
+    "load",
+    () => {
+      elems.html.style.height = initialDimensions.height + "px";
+      elems.body.style.height = initialDimensions.height + "px";
+    },
+    { once: true }
+  );
+  window.addEventListener("resize", (e) => handleResize(e));
+
   changeMode(mode);
   changeColor(color);
 

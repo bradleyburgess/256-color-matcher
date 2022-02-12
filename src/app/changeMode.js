@@ -2,17 +2,19 @@ import Color from "color";
 import * as elems from "./domElements";
 import { shiftFocusToInput } from "./shiftFocusToInput";
 
+const otherMode = { hex: "rgb", rgb: "hex" };
+const getModeArea = (mode) => elems[mode + "InputArea"];
+const getOtherModeArea = (mode) => elems[otherMode[mode] + "InputArea"];
+
 export function changeMode(mode) {
-  elems.hexInputArea.style.display = mode === "hex" ? "flex" : "none";
-  elems.rgbInputArea.style.display = mode === "rgb" ? "flex" : "none";
+  getOtherModeArea(mode).style.display = "none";
+  getModeArea(mode).style.display = "flex";
 
   // make sure the mode is checked; mostly for initialization
   const shouldBeChecked = document.querySelector(
     `input[type='radio'][data-mode='${mode}']`
   );
   if (shouldBeChecked.checked === false) shouldBeChecked.checked = true;
-
-  shiftFocusToInput(mode);
 
   // update mode in swatch text
   const { inputSwatchColor, matchSwatchColor } = elems;
@@ -25,8 +27,9 @@ export function changeMode(mode) {
   inputSwatchColor.innerText = inputSwatchColorText;
   matchSwatchColor.innerText = matchSwatchColorText;
 
-  // save state in local storage
+  shiftFocusToInput(mode);
 
+  // save state in local storage
   window.localStorage.setItem("lastMode", mode);
   window.localStorage.setItem("lastColor", inputSwatchColorText);
 }

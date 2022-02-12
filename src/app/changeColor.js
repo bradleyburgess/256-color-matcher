@@ -16,6 +16,7 @@ export function changeColor(inputColor) {
   const inputSwatchTextColor = getContrastingTextColor(inputColor);
   const matchSwatchTextColor = getContrastingTextColor(matchColor);
 
+  elems.body.style.backgroundColor = matchColor;
   elems.inputSwatch.style.backgroundColor = inputColor;
   elems.inputSwatch.style.color = inputSwatchTextColor;
   elems.inputSwatchColor.innerText = inputColor;
