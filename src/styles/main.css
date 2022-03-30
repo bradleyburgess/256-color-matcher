@@ -8,12 +8,14 @@
 /* basic styling */
 html {
   font-size: 16px;
+  height: 100%;
 }
 
 body {
   font-family: var(--font-sans);
   background-color: var(--gray9);
   color: var(--gray1);
+  height: 100%;
 }
 
 p {

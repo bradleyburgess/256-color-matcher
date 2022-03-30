@@ -4,8 +4,38 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="styles/main.css" />
     <title>256 Color Matcher</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+      body,
+      html {
+        height: 100%;
+      }
+      .container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        height: 100%;
+      }
+      .swatch-container {
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+      .swatch {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        background-color: white;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -91,6 +121,6 @@
       </div>
     </div>
 
-    <script src="./bundle.js"></script>
+    <script src="./index.js" type="module"></script>
   </body>
 </html>

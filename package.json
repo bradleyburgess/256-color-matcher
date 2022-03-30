@@ -2,17 +2,16 @@
   "name": "256-color-matcher",
   "version": "2.0.0",
   "description": "Find the closest matching standard 256 color",
-  "main": "dist/index.js",
   "repository": "git@github.com:bradleyburgess/256-color-matcher.git",
   "author": "Bradley Burgess <bradleyburgess@gmail.com>",
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "cross-env NODE_ENV=production webpack",
-    "preanalyze": "cross-env NODE_ENV=production webpack --profile --json > stats.json",
-    "analyze": "webpack-bundle-analyzer stats.json",
-    "dev": "cross-env NODE_ENV=development webpack serve",
-    "format": "prettier --write \"./src/*.{js,json,css,scss}\" \"./dist/index.html\"",
+    "analyze": "parcel build src/index.html --reporter @parcel/reporter-bundle-analyzer",
+    "build": "parcel build src/index.html",
+    "clean": "rimraf dist",
+    "dev": "parcel src/index.html",
+    "format": "prettier --write \"./src/*.{js,json,css,scss,html}\"",
     "lint": "eslint src",
     "test": "clear && jest",
     "test:watch": "jest --watch"
@@ -20,6 +19,7 @@
   "devDependencies": {
     "@babel/core": "^7.17.8",
     "@babel/plugin-transform-modules-commonjs": "^7.17.7",
+    "@parcel/reporter-bundle-analyzer": "^2.4.0",
     "babel-jest": "^27.5.1",
     "cross-env": "^7.0.3",
     "eslint": "^8.12.0",
@@ -27,14 +27,13 @@
     "eslint-plugin-jest": "^26.1.3",
     "jest": "^27.5.1",
     "parcel": "^2.4.0",
-    "prettier": "^2.6.1"
+    "prettier": "^2.6.1",
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
     "color": "^4.2.1",
     "color-diff": "^1.2.0",
     "normalize.css": "^8.0.1"
   },
-  "engines": {
-    "node": ">=16.0.0"
-  }
+  "browserslist": "defaults"
 }
