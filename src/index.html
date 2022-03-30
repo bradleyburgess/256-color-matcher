@@ -13,10 +13,19 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      rel="stylesheet"
+      rel="preload"
       href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Open+Sans:wght@400;600;700&display=swap"
       media="screen"
+      as="style"
+      onload="this.onload=null;this.rel='stylesheet'"
     />
+    <noscript>
+      <link
+        rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Fira+Mono&family=Open+Sans:wght@400;600;700&display=swap"
+        media="screen"
+      />
+    </noscript>
     <title>256 Color Matcher</title>
     <style>
       *,
