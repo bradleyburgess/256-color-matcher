@@ -19,7 +19,7 @@
   },
   "devDependencies": {
     "@babel/core": "^7.16.12",
-    "@babel/plugin-transform-modules-commonjs": "^7.16.8",
+    "@babel/plugin-transform-modules-commonjs": "^7.17.7",
     "babel-jest": "^27.4.6",
     "cross-env": "^7.0.3",
     "css-loader": "^6.5.1",
