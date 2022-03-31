@@ -90,10 +90,20 @@ import { handleResize } from "./app/handlers";
     });
   });
 
-  window.onload = async () => {
+  // function to dynamically load dense modules and
+  // import on window load; reduces main thread work
+  window.addEventListener(
+    "load",
+    async () => {
+      if (!changeMode || !changeColor) loadModules();
+    },
+    { once: true }
+  );
+
+  async function loadModules() {
     const colorModule = await import("./app/changeColor");
     const modeModule = await import("./app/changeMode");
     changeColor = colorModule.changeColor;
     changeMode = modeModule.changeMode;
-  };
+  }
 })();
