@@ -24,3 +24,6 @@ yarn-error.log*
 # Parcel
 .parcel-cache/
 parcel-bundle-reports/
+
+# temp
+ /temp
