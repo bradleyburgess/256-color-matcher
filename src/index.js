@@ -29,13 +29,19 @@ import { handleResize } from "./app/handlers";
 
   if (!(mode === "hex" && color === "#ffffff")) {
     (async () => {
-      await loadModules();
+      const modeModule = await import("./app/changeMode");
+      const colorModule = await import("./app/changeColor");
+      changeMode = modeModule.changeMode;
+      changeColor = colorModule.changeColor;
+      // modeModule.changeMode(mode);
+      // colorModule.changeColor(color);
       changeMode(mode);
       changeColor(color);
-
-      shiftFocusToInput(mode);
     })();
   }
+
+  // shift focus to input
+  shiftFocusToInput(mode);
 
   // make initial swatch color paint be more gradual
   elems.swatches.forEach((swatch) =>
@@ -88,7 +94,7 @@ import { handleResize } from "./app/handlers";
   // import on window load; reduces main thread work
   window.addEventListener(
     "load",
-    () => {
+    async () => {
       if (!changeMode || !changeColor) loadModules();
     },
     { once: true }
