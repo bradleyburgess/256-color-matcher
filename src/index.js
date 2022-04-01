@@ -95,5 +95,6 @@ import { handleResize } from "./app/handlers";
     const modeModule = await import("./app/changeMode");
     changeColor = colorModule.changeColor;
     changeMode = modeModule.changeMode;
+    elems.disabledInputs.forEach((input) => (input.disabled = false));
   };
 })();

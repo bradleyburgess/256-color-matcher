@@ -1,5 +1,6 @@
 export const bInput = document.querySelector("#b-input");
 export const body = document.body;
+export const disabledInputs = document.querySelectorAll("input[disabled]");
 export const forms = document.querySelectorAll("form");
 export const gInput = document.querySelector("#g-input");
 export const hexInput = document.querySelector("#hex-input");

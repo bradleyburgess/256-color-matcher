@@ -18,6 +18,8 @@
 input {
   background-color: var(--gray9);
   font-family: var(--font-mono);
+  transition: var(--transition-duration) background-color
+    var(--transition-function);
 }
 
 label {
@@ -74,7 +76,7 @@ input[type="radio"] {
   width: 100%;
   background-color: var(--gray2);
   z-index: -1;
-  transition: var(--transition-duration) transform var(--transition-function);
+  transition: var(--transition-duration) all var(--transition-function);
 }
 
 .hex-radio-label::before {

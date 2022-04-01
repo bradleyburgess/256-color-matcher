@@ -8,6 +8,7 @@
       name="description"
       content="256 Color Matcher: Match a given RGB or Hex input to a standard 8-bit / 256 color"
     />
+    <script src="./index.js" type="module" defer></script>
     <link rel="stylesheet" href="styles/main.css" />
     <!-- <link rel="shortcut icon" href="favicon.png" type="image/x-icon" /> -->
     <link rel="shortcut icon" href="./favicon.ico" sizes="any" />
@@ -31,6 +32,10 @@
     </noscript>
     <title>256 Color Matcher</title>
     <style>
+      :root {
+        --disabled-bg: #dee2e6;
+        --disabled: #6c757d;
+      }
       *,
       *::before,
       *::after {
@@ -58,6 +63,14 @@
         flex-grow: 1;
         background-color: white;
       }
+      input[type="text"][disabled] {
+        color: var(--disabled);
+        background-color: var(--disabled-bg);
+        border-color: var(--disabled-bg);
+      }
+      input[type="radio"][disabled] ~ ::before {
+        background-color: #adb5bd;
+      }
     </style>
   </head>
   <body>
@@ -82,18 +95,25 @@
           <form class="mode-form" autocomplete="off" spellcheck="false">
             <div class="mode">
               <input
-                type="radio"
-                name="mode"
-                id="hex-radio"
                 checked
+                disabled
                 data-mode="hex"
+                id="hex-radio"
+                name="mode"
+                type="radio"
               />
               <label for="hex-radio" class="mode-radio-label hex-radio-label"
                 >Hex</label
               >
             </div>
             <div class="mode">
-              <input type="radio" name="mode" id="rgb-radio" data-mode="rgb" />
+              <input
+                disabled
+                type="radio"
+                name="mode"
+                id="rgb-radio"
+                data-mode="rgb"
+              />
               <label for="rgb-radio" class="mode-radio-label rgb-radio-label"
                 >RGB</label
               >
@@ -105,14 +125,15 @@
             <div class="color-input-area" id="hex-input-area">
               <label for="hex-input" class="color-input-label"
                 >Hex<input
-                  type="text"
-                  name="hex-input"
-                  id="hex-input"
                   class="color-input"
+                  disabled
+                  id="hex-input"
+                  name="hex-input"
+                  type="text"
                   value="#ffffff"
               /></label>
             </div>
-            <div class="color-input-area" id="rgb-input-area">
+            <div class="color-input-area hidden" id="rgb-input-area">
               <label for="r-input" class="color-input-label"
                 >R<input
                   class="color-input"
@@ -120,7 +141,8 @@
                   max="255"
                   min="0"
                   name="r-input"
-                  type="number" /></label
+                  type="number"
+                  value="255" /></label
               ><label for="g-input" class="color-input-label"
                 >G<input
                   class="color-input"
@@ -128,7 +150,8 @@
                   max="255"
                   min="0"
                   name="g-input"
-                  type="number" /></label
+                  type="number"
+                  value="255" /></label
               ><label for="b-input" class="color-input-label"
                 >B<input
                   class="color-input"
@@ -137,13 +160,12 @@
                   min="0"
                   name="b-input"
                   type="number"
+                  value="255"
               /></label>
             </div>
           </form>
         </div>
       </div>
     </div>
-
-    <script src="./index.js" type="module"></script>
   </body>
 </html>
