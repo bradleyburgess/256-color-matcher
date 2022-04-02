@@ -8,7 +8,7 @@ import { sanitizeRgb } from "./lib/sanitizeRgb";
 import { shiftFocusToInput } from "./app/shiftFocusToInput";
 import { handleResize } from "./app/handlers";
 
-(() => {
+(async () => {
   let changeMode, changeColor;
 
   // load saved state, if any
@@ -17,14 +17,17 @@ import { handleResize } from "./app/handlers";
     width: window.innerWidth,
     height: window.innerHeight,
   };
-  window.addEventListener(
-    "load",
-    () => {
-      elems.html.style.height = initialDimensions.height + "px";
-      elems.body.style.height = initialDimensions.height + "px";
-    },
-    { once: true }
-  );
+
+  // uncomment for non-deferred script:
+  // window.addEventListener(
+  //   "load",
+  //   () => {
+  elems.html.style.height = initialDimensions.height + "px";
+  elems.body.style.height = initialDimensions.height + "px";
+  //   },
+  //   { once: true }
+  // );
+
   window.addEventListener("resize", (e) => handleResize(e));
 
   if (!(mode === "hex" && color === "#ffffff")) {
@@ -33,8 +36,6 @@ import { handleResize } from "./app/handlers";
       const colorModule = await import("./app/changeColor");
       changeMode = modeModule.changeMode;
       changeColor = colorModule.changeColor;
-      // modeModule.changeMode(mode);
-      // colorModule.changeColor(color);
       changeMode(mode);
       changeColor(color);
     })();
@@ -49,7 +50,7 @@ import { handleResize } from "./app/handlers";
       "transitionend",
       () => {
         swatch.style.transitionDuration = "100ms";
-        swatch.style.transitionDealy = "0s";
+        swatch.style.transitionDelay = "0s";
       },
       { once: true }
     )
@@ -90,11 +91,14 @@ import { handleResize } from "./app/handlers";
     });
   });
 
-  window.onload = async () => {
-    const colorModule = await import("./app/changeColor");
-    const modeModule = await import("./app/changeMode");
-    changeColor = colorModule.changeColor;
-    changeMode = modeModule.changeMode;
-    elems.disabledInputs.forEach((input) => (input.disabled = false));
-  };
+  // uncomment for non-deferred scripts:
+  // window.onload = async () => {
+  const [colorModule, modeModule] = await Promise.all([
+    import("./app/changeColor"),
+    import("./app/changeMode"),
+  ]);
+  changeColor = colorModule.changeColor;
+  changeMode = modeModule.changeMode;
+  elems.disabledInputs.forEach((input) => (input.disabled = false));
+  // };
 })();
