@@ -1,6 +1,6 @@
 import * as elems from "./app/domElements";
-// import { changeColor } from "./app/changeColor";
-// import { changeMode } from "./app/changeMode";
+import { changeColor } from "./app/changeColor";
+import { changeMode } from "./app/changeMode";
 import { isValidHex } from "./lib/isValidHex";
 import { loadInitialState } from "./app/loadInitialState";
 import { sanitizeHex } from "./lib/sanitizeHex";
@@ -8,9 +8,7 @@ import { sanitizeRgb } from "./lib/sanitizeRgb";
 import { shiftFocusToInput } from "./app/shiftFocusToInput";
 import { handleResize } from "./app/handlers";
 
-(async () => {
-  let changeMode, changeColor;
-
+(() => {
   // load saved state, if any
   const { mode, color } = loadInitialState();
   const initialDimensions = {
@@ -30,16 +28,17 @@ import { handleResize } from "./app/handlers";
 
   window.addEventListener("resize", (e) => handleResize(e));
 
-  if (!(mode === "hex" && color === "#ffffff")) {
-    (async () => {
-      const modeModule = await import("./app/changeMode");
-      const colorModule = await import("./app/changeColor");
-      changeMode = modeModule.changeMode;
-      changeColor = colorModule.changeColor;
-      changeMode(mode);
-      changeColor(color);
-    })();
-  }
+  // if (!(mode === "hex" && color === "#ffffff")) {
+  //   (async () => {
+  //     const modeModule = await import("./app/changeMode");
+  //     const colorModule = await import("./app/changeColor");
+  //     changeMode = modeModule.changeMode;
+  //     changeColor = colorModule.changeColor;
+  changeMode(mode);
+  changeColor(color);
+  elems.disabledInputs.forEach((input) => (input.disabled = false));
+  //   })();
+  // }
 
   // shift focus to input
   shiftFocusToInput(mode);
@@ -93,12 +92,12 @@ import { handleResize } from "./app/handlers";
 
   // uncomment for non-deferred scripts:
   // window.onload = async () => {
-  const [colorModule, modeModule] = await Promise.all([
-    import("./app/changeColor"),
-    import("./app/changeMode"),
-  ]);
-  changeColor = colorModule.changeColor;
-  changeMode = modeModule.changeMode;
-  elems.disabledInputs.forEach((input) => (input.disabled = false));
+  // const [colorModule, modeModule] = await Promise.all([
+  //   import("./app/changeColor"),
+  //   import("./app/changeMode"),
+  // ]);
+  // changeColor = colorModule.changeColor;
+  // changeMode = modeModule.changeMode;
+  // elems.disabledInputs.forEach((input) => (input.disabled = false));
   // };
 })();
