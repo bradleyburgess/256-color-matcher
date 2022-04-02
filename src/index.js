@@ -16,32 +16,10 @@ import { handleResize } from "./app/handlers";
     height: window.innerHeight,
   };
 
-  // uncomment for non-deferred script:
-  // window.addEventListener(
-  //   "load",
-  //   () => {
+  // set dimensions; for debounced resizing handler
   elems.html.style.height = initialDimensions.height + "px";
   elems.body.style.height = initialDimensions.height + "px";
-  //   },
-  //   { once: true }
-  // );
-
   window.addEventListener("resize", (e) => handleResize(e));
-
-  // if (!(mode === "hex" && color === "#ffffff")) {
-  //   (async () => {
-  //     const modeModule = await import("./app/changeMode");
-  //     const colorModule = await import("./app/changeColor");
-  //     changeMode = modeModule.changeMode;
-  //     changeColor = colorModule.changeColor;
-  changeMode(mode);
-  changeColor(color);
-  elems.disabledInputs.forEach((input) => (input.disabled = false));
-  //   })();
-  // }
-
-  // shift focus to input
-  shiftFocusToInput(mode);
 
   // make initial swatch color paint be more gradual
   elems.swatches.forEach((swatch) =>
@@ -54,6 +32,14 @@ import { handleResize } from "./app/handlers";
       { once: true }
     )
   );
+
+  // set initial color and mode, from saved state if any
+  changeMode(mode);
+  changeColor(color);
+  shiftFocusToInput(mode);
+
+  // enabled inputs; disabled in initial HTML for loading
+  elems.disabledInputs.forEach((input) => (input.disabled = false));
 
   // prevent submitting of forms
   elems.forms.forEach((form) =>
@@ -89,15 +75,4 @@ import { handleResize } from "./app/handlers";
       changeMode(mode);
     });
   });
-
-  // uncomment for non-deferred scripts:
-  // window.onload = async () => {
-  // const [colorModule, modeModule] = await Promise.all([
-  //   import("./app/changeColor"),
-  //   import("./app/changeMode"),
-  // ]);
-  // changeColor = colorModule.changeColor;
-  // changeMode = modeModule.changeMode;
-  // elems.disabledInputs.forEach((input) => (input.disabled = false));
-  // };
 })();
