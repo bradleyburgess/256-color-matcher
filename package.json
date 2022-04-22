@@ -36,5 +36,8 @@
     "color-diff": "^1.2.0",
     "normalize.css": "^8.0.1"
   },
-  "browserslist": "defaults"
+  "browserslist": "defaults",
+  "engines": {
+    "node": ">=14"
+  }
 }
