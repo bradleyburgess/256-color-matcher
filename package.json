@@ -20,7 +20,7 @@
     "@babel/core": "^7.17.9",
     "@babel/plugin-transform-modules-commonjs": "^7.17.9",
     "@parcel/reporter-bundle-analyzer": "^2.5.0",
-    "babel-jest": "^27.5.1",
+    "babel-jest": "^28.0.1",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "cross-env": "^7.0.3",
     "eslint": "^8.14.0",
