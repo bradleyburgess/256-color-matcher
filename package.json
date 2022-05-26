@@ -19,7 +19,7 @@
   "devDependencies": {
     "@babel/core": "^7.18.0",
     "@babel/plugin-transform-modules-commonjs": "^7.18.0",
-    "@parcel/reporter-bundle-analyzer": "^2.5.0",
+    "@parcel/reporter-bundle-analyzer": "^2.6.0",
     "babel-jest": "^28.1.0",
     "babel-plugin-transform-remove-console": "^6.9.4",
     "cross-env": "^7.0.3",
