@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "color": "^4.2.3",
-    "color-diff": "^1.2.0",
+    "color-diff": "^1.4.0",
     "normalize.css": "^8.0.1"
   },
   "browserslist": "defaults",
